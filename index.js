@@ -94,7 +94,7 @@ client.on('messageCreate', async (message) => {
   if(message.channel.type === 'DM') return;
   if(message.author.bot) return;
   if(!message.content.startsWith(prefix)) return;
-  if(!message.member.roles.cache.has('895055836643217449')) return message.channel.send("Lo siento en estos momentos estoy en fase de prueba, por lo tanto solo los Testers podrán usar mis comandos. Si te preguntas cuando volvere a estar disponible para todo publico, te digo que será el 31 de Diciembre del 2021.")
+  if(!message.member.roles.cache.has('895055836643217449')) return message.channel.send("Lo siento en estos momentos estoy en fase de prueba, por lo tanto solo los Testers podrán usar mis comandos. Si te preguntas cuando volvere a estar disponible para todo publico, te digo que será el 31 de Diciembre del 2021 a las 12:00am")
 
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
