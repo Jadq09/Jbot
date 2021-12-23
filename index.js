@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const intents = new Discord.Intents(32767)
 const client = new Discord.Client({ intents });
+const ms = require("ms")
 
 // Discord.js
 
@@ -18,18 +19,12 @@ let { readdirSync } = require('fs');
 
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./Comandos').filter(file => file.endsWith('.js'));
-const sorteosCommandFiles = fs.readdirSync('./Comandos/Sorteos').filter(file => file.endsWith('.js'));
 //const christmascommandfiles = fs.readdirSync('./Comandos/Navidad').filter(file => file.endsWith('.js'));
 //const musiccommandfiles = fs.readdirSync('./Comandos/Música').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
     const command = require(`./Comandos/${file}`);
     client.commands.set(command.name, command);
-}
-
-for (const file of sorteosCommandFiles) {
-  const command = require(`./Comandos/${file}`);
-  client.commands.set(command.name, command)
 }
 
 for (const file of readdirSync('./Eventos')){
@@ -108,7 +103,6 @@ client.on('messageCreate', async (message) => {
     message.reply("Hola!")
   }
 
-  let cooldown = new Set();
   let cmd = client.commands.find((c) => c.name === command || c.alias && c.alias.includes(command))
   if(cmd){
   cmd.execute(client, message, args)
