@@ -18,6 +18,7 @@ let { readdirSync } = require('fs');
 
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./Comandos').filter(file => file.endsWith('.js'));
+const sorteosCommandFiles = fs.readdirSync('./Comandos/Sorteos').filter(file => file.endsWith('.js'));
 //const christmascommandfiles = fs.readdirSync('./Comandos/Navidad').filter(file => file.endsWith('.js'));
 //const musiccommandfiles = fs.readdirSync('./Comandos/Música').filter(file => file.endsWith('.js'));
 
@@ -26,6 +27,10 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
+for (const file of sorteosCommandFiles) {
+  const command = require(`./Comandos/${file}`);
+  client.commands.set(command.name, command)
+}
 
 for (const file of readdirSync('./Eventos')){
   if(file.endsWith('.js')){
