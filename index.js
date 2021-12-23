@@ -11,6 +11,8 @@ const { Permissions } = require('discord.js');
 
 // const keepAlive = require('./server')
 
+const config = require("./config.json");
+
 const db = require('megadb')
 const prefix_db = new db.crearDB('prefix')
 
@@ -116,4 +118,4 @@ client.on('ready', () => {
 });
 
 // keepAlive();
-client.login("ODgxNDQ1NzMwMDE4MDAwOTM3.YSs8Tg.Tla5pQyorjF3dv0SMhq1XeKDJW0");
+client.login(config.token);
