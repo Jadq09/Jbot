@@ -15,7 +15,7 @@ async execute (client, message, args){
 
   let embed = new Discord.MessageEmbed()
   .setTitle(`Código QR de ${text}`)
-  .setImage(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text.replace(new RegExp(" ", "g"))}`)
+  .setImage(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text.replace(new RegExp(" "))}`)
   .setColor("ORANGE");
 
 message.channel.send({ embeds: [embed] }).then(() => pleaseWait.delete());
